@@ -1,4 +1,6 @@
 import styled from "@emotion/styled"
+
+import { Form } from "./components/Form"
 import ImagenCripto from "../assets/img/imagen-criptos.png"
 
 const Contenedor = styled.div`
@@ -44,6 +46,7 @@ function App() {
       <Imagen src={ImagenCripto} alt='Imagen Criptomonedas' />
       <div>
         <Heading>Cotiza criptomenedas al instante</Heading>
+        <Form />
       </div>
     </Contenedor>
   )
