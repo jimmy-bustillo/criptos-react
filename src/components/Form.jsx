@@ -23,7 +23,7 @@ const InputSubmit = styled.input`
   }
 `
 
-export const Form = () => {
+export const Form = ({setMonedas}) => {
   const [criptos, setCriptos] = useState([])
   const [error, setError] = useState(false)
 
@@ -63,6 +63,10 @@ export const Form = () => {
       return
     } else {
       setError(false)
+      setMonedas({
+        moneda,
+        criptoMoneda
+      })
     }
   }
 
