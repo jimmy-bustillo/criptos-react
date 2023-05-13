@@ -23,7 +23,7 @@ const InputSubmit = styled.input`
   }
 `
 
-export const Form = ({setMonedas}) => {
+export const Form = ({ setMonedas }) => {
   const [criptos, setCriptos] = useState([])
   const [error, setError] = useState(false)
 
@@ -65,23 +65,22 @@ export const Form = ({setMonedas}) => {
       setError(false)
       setMonedas({
         moneda,
-        criptoMoneda
+        criptoMoneda,
       })
     }
   }
 
   return (
     <>
+      {error && <Error>Todos los campos son obligatorios</Error>}
 
-    {error && <Error>Todos los campos son obligatorios</Error>}
+      <form onSubmit={handleSumit}>
+        <SelectMonedas />
 
-    <form onSubmit={handleSumit}>
-      <SelectMonedas />
+        <SelectCriptoMonedas />
 
-      <SelectCriptoMonedas />
-
-      <InputSubmit type='submit' value='Cotizar' />
-    </form>
+        <InputSubmit type='submit' value='Cotizar' />
+      </form>
     </>
   )
 }
