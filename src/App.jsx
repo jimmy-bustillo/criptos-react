@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import styled from "@emotion/styled"
 import { Form } from "./components/Form"
+import Resultado from "./components/Resultado"
 import ImagenCripto from "../assets/img/imagen-criptos.png"
 
 const Contenedor = styled.div`
@@ -49,7 +50,7 @@ function App() {
       const cotizarCripto = async () => {
         const { moneda, criptoMoneda } = monedas
         const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptoMoneda}&tsyms=${moneda}`
-        
+
         const respuesta = await fetch(url)
         const resultado = await respuesta.json()
         setResultado(resultado.DISPLAY[criptoMoneda][moneda])
@@ -64,6 +65,7 @@ function App() {
       <div>
         <Heading>Cotiza criptomenedas al instante</Heading>
         <Form setMonedas={setMonedas} />
+        {resultado.PRICE && <Resultado resultado={resultado}/>}
       </div>
     </Contenedor>
   )
